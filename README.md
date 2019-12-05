@@ -5,7 +5,7 @@
 ## Порядок использования
 
 1. Установить зависимости
-```python
+```py
 pip3 install -r requirements.txt
 ```
 
