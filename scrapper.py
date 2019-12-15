@@ -1,3 +1,4 @@
+import logging
 import re
 
 import requests
@@ -25,9 +26,7 @@ SEARCH_ENGINE_REQUEST_HEADERS = {
     'User-Agent': get_user_agent()
 }
 
-
-class CaptchaError(Exception):
-    pass
+logger = logging.getLogger('scrapper')
 
 
 def get_search_url(domain, query):
@@ -44,10 +43,14 @@ def get_links(url, scrapping_rule):
     headers = SEARCH_ENGINE_REQUEST_HEADERS
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.text, 'html.parser')
+    logger.debug(soup)
+
+    links = []
     try:
         links = scrapping_rule(soup)
     except AttributeError:
-        raise CaptchaError('Bot warning mode was activated in search engine. Please wait a few minutes and try again')
+        logger.error('Bot warning mode was activated in search engine. Please wait a few minutes and try again')
+
     return links
 
 
