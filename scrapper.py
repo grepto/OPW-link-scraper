@@ -21,6 +21,10 @@ SCRAPPING_PREFERENCES = dict(
     ),
 )
 
+SEARCH_ENGINE_REQUEST_HEADERS = {
+    'User-Agent': get_user_agent()
+}
+
 
 def get_search_url(domain, query):
     return SCRAPPING_PREFERENCES[domain]['url_pattern'](query)
@@ -31,8 +35,7 @@ def get_scrapping_func(domain='other'):
 
 
 def get_links(url, scrapping_rule):
-    user_agent = random.choice(USER_AGENT_LIST)
-    headers = {'User-Agent': user_agent}
+    headers = SEARCH_ENGINE_REQUEST_HEADERS
 
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.text, 'html.parser')
