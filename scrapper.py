@@ -39,6 +39,8 @@ def get_scrapping_func(domain='other'):
 
 
 def get_links(url, scrapping_rule):
+    """Getting search result page html code """
+
     headers = SEARCH_ENGINE_REQUEST_HEADERS
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.text, 'html.parser')
@@ -50,6 +52,8 @@ def get_links(url, scrapping_rule):
 
 
 def find_links(search_engine, query, limit=None, is_recursively=False):
+    """Links and annotation extraction"""
+
     url = get_search_url(search_engine, query)
     search_engine_scrapping_rule = get_scrapping_func(search_engine)
 
