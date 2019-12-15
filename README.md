@@ -9,7 +9,13 @@
 pip3 install -r requirements.txt
 ```
 
-2. Запустить скрипт с нужными аргументами
+2. Добавить в переменные окружения значение `LOG_LEVEL` - уровень логирования (NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL)
+Вместо прописывания переменной в окружение, можно положить в папку проекта файл `.env` в потором прописать
+```dotenv
+LOG_LEVEL=INFO  # NOTSET, DEBUG, INFO, WARNING, ERROR, CRITICAL
+```
+
+3. Запустить скрипт с нужными аргументами
 ```shell script
 search_links.py выхухоль google -l 50 -r
 ```
