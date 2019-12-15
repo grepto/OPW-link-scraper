@@ -16,4 +16,4 @@ if __name__ == '__main__':
     finded_links = find_links(args.engine, args.query, args.limit, args.is_recursively)
 
     for (link, title) in finded_links:
-        print(title, link, sep=' - ')
+        print(title, link, sep=' - ')  # noqa

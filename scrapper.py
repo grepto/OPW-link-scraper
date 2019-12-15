@@ -68,7 +68,6 @@ def get_links(url, scrapping_rule):
 
 
 def find_links(search_engine, query, limit=None, is_recursively=False):
-    print(search_engine, query, limit, is_recursively)
     url = get_search_url(search_engine, query)
     search_engine_scrapping_rule = get_scrapping_func(search_engine)
 
