@@ -26,6 +26,10 @@ SEARCH_ENGINE_REQUEST_HEADERS = {
 }
 
 
+class CaptchaError(Exception):
+    pass
+
+
 def get_search_url(domain, query):
     return SCRAPPING_PREFERENCES[domain]['url_pattern'](query)
 
@@ -38,8 +42,11 @@ def get_links(url, scrapping_rule):
     headers = SEARCH_ENGINE_REQUEST_HEADERS
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.text, 'html.parser')
-
-    return scrapping_rule(soup)
+    try:
+        links = scrapping_rule(soup)
+    except AttributeError:
+        raise CaptchaError('Bot warning mode was activated in search engine. Please wait a few minutes and try again')
+    return links
 
 
 def find_links(search_engine, query, limit=None, is_recursively=False):
