@@ -14,7 +14,7 @@ SCRAPPING_PREFERENCES = dict(
     ),
     google=dict(
         url_pattern=lambda x: f'https://www.google.com/search?q={x}',
-        scrap_rule=lambda soup: [(div.a['href'], div.a.h3.span.text) for div in soup.find_all('div', class_='r')]
+        scrap_rule=lambda soup: [(div.a['href'], div.a.h3) for div in soup.find_all('div', class_='r')]
     ),
     other=dict(
         scrap_rule=lambda soup: [(a['href'], a.text) for a in soup.find_all('a', href=re.compile('^(http|https)://'))]
