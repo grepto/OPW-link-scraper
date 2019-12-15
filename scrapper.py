@@ -36,7 +36,6 @@ def get_scrapping_func(domain='other'):
 
 def get_links(url, scrapping_rule):
     headers = SEARCH_ENGINE_REQUEST_HEADERS
-
     page = requests.get(url, headers=headers)
     soup = BeautifulSoup(page.text, 'html.parser')
 
