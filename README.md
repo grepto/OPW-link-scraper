@@ -11,7 +11,7 @@ pip3 install -r requirements.txt
 
 2. Запустить скрипт с нужными аргументами
 ```shell script
-app.py выхухоль google -l 50 -r
+search_links.py выхухоль google -l 50 -r
 ```
 
 Чтобы узнать значение и варианты аргументов, нужно набрать
@@ -21,5 +21,5 @@ app.py -h
 
 Если при запуске скрипта шелл выдает ошибку разрешений `permission denied`, нужно дать права на запуск файлу `app.py`
 ```shell script
-chmod u+x app.py
+chmod u+x search_links.py
 ```
